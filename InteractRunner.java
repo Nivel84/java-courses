@@ -10,13 +10,33 @@ public class InteractRunner {
 			Calculator calc = new Calculator();
 			String exit = "no";
 			while (!exit.equals("yes")) {
+				System.out.println("Select opetation: <add, deduct, multiply, devide>");
+				String select = reader.next();
 				System.out.println("Enter first arg:");
 				String first = reader.next();
 				System.out.println("Enter second arg:");
 				String second = reader.next();
-				calc.add(Integer.valueOf(first), Integer.valueOf(second));
+				switch(select) {
+					case "add":
+						calc.add(Integer.valueOf(first), Integer.valueOf(second));
+						break;
+					case "deduct":
+						calc.deduct(Integer.valueOf(first), Integer.valueOf(second));
+						break;
+					case "multiply":
+						calc.multiply(Integer.valueOf(first), Integer.valueOf(second));
+						break;
+					case "devide":
+						calc.devide(Integer.valueOf(first), Integer.valueOf(second));
+						break;
+				}
+				
 				System.out.println("Result: " + calc.getResult());
-				calc.cleanResult();
+				System.out.println("Clean result or use: <yes/no>");
+				String choose = reader.next();
+				if (choose.equals("yes")) {
+					calc.cleanResult();
+				}
 				System.out.println("Exit: yes/no");
 				exit = reader.next();
 			}
